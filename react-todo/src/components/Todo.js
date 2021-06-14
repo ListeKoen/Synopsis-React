@@ -42,22 +42,34 @@ function Todo() {
     const [tasksRemaining, setTasksRemaining] = useState(0);
     const [tasks, setTasks] = useState([
         {
-            title: "Grab some Pizza",
-            completed: true
+            title: "Learn JavaScript",
+            completed: false
         },
         {
-            title: "Do your workout",
-            completed: true
+            title: "Learn React",
+            completed: false
         },
         {
-            title: "Hangout with friends",
+            title: "Make a project",
             completed: false
         }
     ]);
 
+    //useEffect is a hook which let's you run side effects in function components -- 
+    //it can be thought of as the lifecycle hooks "componentDidMount, componentDidUpdate and componentWillUnmount" all put together
+
+    // componentDidMount() {
+    //     setTasksRemaining(tasks.filter(task => !task.completed).length)
+    // };
+
+    // componentDidUpdate() {
+    //     setTasksRemaining(tasks.filter(task => !task.completed).length)
+    // };
+
     useEffect(() => {
         setTasksRemaining(tasks.filter(task => !task.completed).length)
     });
+
 
     const addTask = title => {
         const newTasks = [...tasks, { title, completed: false }];
